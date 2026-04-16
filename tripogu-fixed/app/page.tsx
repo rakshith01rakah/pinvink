@@ -1,7 +1,13 @@
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-import { HeroMap } from '@/components/hero-map';
+import dynamicImport from 'next/dynamic';
+
+// ✅ Disable SSR for map (CRITICAL FIX)
+const HeroMap = dynamicImport(() => import('@/components/hero-map'), {
+ssr: false,
+});
+
 import { CategoryPills, SearchHeader } from '@/components/search-and-filters';
 import { PlaceCard, RouteCard, BlogCard } from '@/components/content-cards';
 import { SectionHeader, Badge, PrimaryLink, Surface } from '@/components/ui';
