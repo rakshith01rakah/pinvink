@@ -1,17 +1,16 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import { SiteShell } from '@/components/site-shell';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Tripogu',
-  description: 'Responsive Next.js travel discovery UI built with Material 3 principles.',
-};
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import theme from "../theme/theme";
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <SiteShell>{children}</SiteShell>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
